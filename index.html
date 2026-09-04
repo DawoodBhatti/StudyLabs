@@ -22,6 +22,7 @@
     --band-text: #f2ede0;
     --band-text-muted: #aab3c8;
     --band-border: rgba(242, 237, 224, 0.14);
+    --band-accent: #d7a552;
 
     /* light theme */
     --bg: #faf7f0;
@@ -486,6 +487,21 @@
     justify-content: center;
   }
 
+  /* Outbound link in the prose. `a { color: inherit }` would leave it looking
+     like plain text. Uses --text rather than --accent: the accent only reaches
+     3.9:1 on the cream background, which fails AA for body text. */
+  .about-bio .ext-link {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+
+  .about-bio .ext-link:hover,
+  .about-bio .ext-link:focus-visible { color: var(--accent); }
+
+  .testimonial-card .mark-close { margin-top: -6px; }
+
   .testimonial-card .mark {
     font-family: "Fraunces", Georgia, serif;
     font-size: 2.6rem;
@@ -590,6 +606,16 @@
 
   .contact-band h2 { color: var(--band-text); font-size: clamp(1.5rem, 3vw, 2.1rem); }
   .contact-band p { color: var(--band-text-muted); max-width: 48ch; }
+
+  .contact-band .mail-link {
+    color: var(--band-accent);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .contact-band .mail-link:hover,
+  .contact-band .mail-link:focus-visible { text-decoration: underline; }
 
   .contact-details {
     display: grid;
@@ -723,7 +749,7 @@
       <a href="#subjects">Prices</a>
       <a href="#approach">Approach</a>
       <a href="#about">About</a>
-      <!-- <a href="#testimonials">Testimonials</a> -->
+      <a href="#testimonials">Testimonials</a>
     </nav>
   </div>
 </header>
@@ -853,10 +879,10 @@
       <h2>Ali Bhatti</h2>
     </div>
     <div class="about-bio">
-      <p>As a young child I loved asking &ldquo;why?&rdquo; While I&#8217;m sure this drove my mother insane, my curiosity led me to the sciences as one way to understand the world that we live in. I especially loved the subject of Physics and was lucky enough to study it at the University of Southampton between 2011 and 2015. It was here, alongside my degree, that I first began tutoring as a way to earn some income and pass on what had been taught to me.</p>
+      <p>As a young child I loved asking &ldquo;why?&rdquo; While I&#8217;m sure this drove my mum insane, my curiosity led me to the sciences as one way to understand the world that we live in. I especially loved the subject of Physics and was lucky enough to study it at the University of Southampton between 2011 and 2015. It was here, alongside my degree, that I first began tutoring for <a class="ext-link" href="https://www.facebook.com/BrightSparkTuition" target="_blank" rel="noopener noreferrer">Bright Spark Tuition</a> as a way to earn some income and pass on what had been taught to me.</p>
       <p>Tutoring brought me a sense of fulfilment beyond just problem solving. Building a close rapport and watching others grow was something I always enjoyed. After I graduated from my Masters, tutoring unfortunately had to take a back seat. I started my career working for the Ministry of Defence as a Systems Engineer and I learnt a great deal but ultimately I missed the technical and conceptual challenges that had drawn me to Physics in the first place.</p>
       <p>That thirst for technical work led me to explore programming as a career and I moved into the energy industry as a developer building pricing engines. I spent four and a half years in the role and found the work fascinating, but I ultimately wanted greater agency over my time and long&#8209;term direction.</p>
-      <p>In 2026 I returned to tutoring. I had recently discovered a passion for art and for video game development and so made the decision to begin supporting myself through teaching while working towards a lifelong goal of becoming an independent game developer.</p>
+      <p>In 2026 I returned to tutoring. I had recently rediscovered a passion for art and for video game development and so made the decision to begin supporting myself through teaching while working towards a lifelong goal of becoming an independent game developer.</p>
       <p>I have learnt a lot along my journey, both in terms of the challenges involved with navigating an education system that values grades above understanding but also about how much it matters to find your own way forward in life.</p>
       <p>So as well as preparing students to pass their exams, I want to help them build confidence in their own thinking. Together we can work on developing exam strategies, conceptual understanding and discipline that will carry far beyond the classroom.</p>
     </div>
@@ -875,10 +901,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIALS HIDDEN FOR LAUNCH. The quotes below are still placeholders.
-     To re-enable: delete this comment opener and the closing marker after the
-     </section>, and restore the nav link above. Real quotes need consent first -
-     from a parent or guardian where the student is under 18. See CLAUDE.md.
 <section id="testimonials" class="alt glyph-field">
   <span class="glyph-bg" style="right:-26px; top:7%; font-size:190px;" aria-hidden="true">ω</span>
   <span class="glyph-bg" style="left:47%; top:48%; font-size:125px; transform:rotate(10deg);" aria-hidden="true">Δ</span>
@@ -886,8 +908,7 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">Testimonials</p>
-      <h2>What students and parents say</h2>
-      <p class="placeholder-note">Placeholder quotes below &mdash; swap these for real feedback as it comes in.</p>
+      <h2>What others have to say:</h2>
     </div>
     <div class="carousel" data-carousel>
       <button class="carousel-arrow" type="button" aria-label="Previous testimonial" data-prev>
@@ -897,27 +918,32 @@
         <div class="carousel-track" data-track>
           <figure class="testimonial-card">
             <span class="mark">&ldquo;</span>
-            <blockquote>[Add a quote here about the grade or exam result a student achieved.]</blockquote>
-            <figcaption>[Student name] &middot; [GCSE Physics]</figcaption>
+            <blockquote>Oh thank you Ali for everything!! For your patience, dedication&hellip; We are truly grateful for the time and effort you have invested in helping her achieve her potential. Thank you for being such an excellent teacher and mentor. Your support has been greatly appreciated by us all.</blockquote>
+            <span class="mark mark-close">&rdquo;</span>
+            <figcaption>Dede &amp; Elisa &middot; A-Level Maths</figcaption>
           </figure>
           <figure class="testimonial-card">
             <span class="mark">&ldquo;</span>
-            <blockquote>[Add a quote here about a student's confidence or understanding improving.]</blockquote>
+            <blockquote>[Add a quote here]</blockquote>
+            <span class="mark mark-close">&rdquo;</span>
             <figcaption>[Student name] &middot; [A-Level Maths]</figcaption>
           </figure>
           <figure class="testimonial-card">
             <span class="mark">&ldquo;</span>
-            <blockquote>[Add a quote here from a parent about communication and reliability.]</blockquote>
+            <blockquote>[Add a quote here]</blockquote>
+            <span class="mark mark-close">&rdquo;</span>
             <figcaption>[Parent name] &middot; Parent of a GCSE student</figcaption>
           </figure>
           <figure class="testimonial-card">
             <span class="mark">&ldquo;</span>
-            <blockquote>[Add a quote here about the teaching style or how topics were explained.]</blockquote>
+            <blockquote>[Add a quote here]</blockquote>
+            <span class="mark mark-close">&rdquo;</span>
             <figcaption>[Student name] &middot; [A-Level Physics]</figcaption>
           </figure>
           <figure class="testimonial-card">
             <span class="mark">&ldquo;</span>
-            <blockquote>[Add a quote here from an adult learner about their experience.]</blockquote>
+            <blockquote>[Add a quote here]</blockquote>
+            <span class="mark mark-close">&rdquo;</span>
             <figcaption>[Name] &middot; Adult learner</figcaption>
           </figure>
         </div>
@@ -927,10 +953,9 @@
       </button>
     </div>
     <div class="carousel-dots" data-dots></div>
-    <p class="testimonials-note">All parents and students featured here are happy to be contacted &mdash; please don't hesitate to <a href="#contact">get in touch</a> if you'd like to speak to any of them personally.</p>
+    <p class="testimonials-note">Everyone featured is happy to be contacted &mdash; please <a href="#contact">get in touch</a> if you'd like to speak to any of them personally.</p>
   </div>
 </section>
--->
 
 <div class="contact-band" id="contact">
   <svg class="glyph-scatter" preserveAspectRatio="none" viewBox="0 0 1080 340" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -939,17 +964,12 @@
       <text x="545" y="118" font-size="108" transform="rotate(5 545 118)">μ</text>
       <text x="940" y="278" font-size="162" transform="rotate(6 940 278)">Ω</text>
     </g>
-    <g transform="translate(1010 250)" opacity="0.8">
-      <circle r="3" fill="#d7a552"/>
-      <ellipse rx="46" ry="16" fill="none" stroke="rgba(215,165,82,0.4)" stroke-width="1" transform="rotate(-18)"/>
-      <ellipse rx="46" ry="16" fill="none" stroke="rgba(143,179,217,0.35)" stroke-width="1" transform="rotate(48)"/>
-    </g>
   </svg>
   <div class="wrap contact-inner">
     <div>
       <p class="eyebrow" style="color:var(--band-text-muted);">Get in touch</p>
       <h2>Let's discuss your tutoring needs.</h2>
-      <p>Get in touch with a bit about the subject, level and exam board, and availability.</p>
+      <p>Get in touch with a bit about the subject, level and exam board, and availability. Email <a class="mail-link" href="mailto:contact@studylabs.co.uk">contact@studylabs.co.uk</a> or use the enquiry form.</p>
     </div>
     <div class="contact-details">
       <form class="contact-form" aria-label="Enquiry form">
@@ -958,13 +978,14 @@
         <input id="cf-name" name="name" type="text" placeholder="Your name" autocomplete="name" disabled>
         <label class="sr-only" for="cf-email">Your email</label>
         <input id="cf-email" name="email" type="email" placeholder="Your email" autocomplete="email" disabled>
+        <label class="sr-only" for="cf-phone">Phone number (optional)</label>
+        <input id="cf-phone" name="phone" type="tel" placeholder="Phone number (optional)" autocomplete="tel" disabled>
         <label class="sr-only" for="cf-level">Subject, level and exam board</label>
         <input id="cf-level" name="level" type="text" placeholder="Subject, level and exam board" disabled>
         <label class="sr-only" for="cf-msg">Message</label>
         <textarea id="cf-msg" name="message" rows="3" placeholder="Availability, and anything else that helps" disabled></textarea>
         <button class="btn" type="submit" disabled>Send enquiry</button>
       </form>
-      <a class="btn" href="mailto:contact@studylabs.co.uk">contact@studylabs.co.uk</a>
       <span>Birmingham, UK &middot; in person or online</span>
     </div>
   </div>
