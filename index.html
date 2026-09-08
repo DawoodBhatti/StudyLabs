@@ -379,13 +379,22 @@
 
   .about {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    /* Photo column fixed at 300px to match the hero. Left as a fraction it grew
+       to 428px at 1280 — nearly the source's native 543px, so it rendered at
+       1.27x density and looked soft beside the hero's 2.13x. */
+    grid-template-columns: minmax(0, 1fr) 300px;
     grid-template-areas: "head head" "bio photo" "cred cred";
     gap: 8px 40px;
     align-items: start;
   }
 
   .about > .section-head { grid-area: head; margin-bottom: 18px; }
+
+  /* Below 860 the hero photo drops to 260px; shrink this column to match so the
+     two portraits stay the same size at every width. */
+  @media (max-width: 860px) {
+    .about { grid-template-columns: minmax(0, 1fr) 260px; }
+  }
 
   @media (max-width: 520px) {
     .about {
@@ -394,7 +403,9 @@
       grid-template-areas: "head" "photo" "cred" "bio";
       row-gap: 20px;
     }
-    .about-photo { max-width: 320px; align-self: start; }
+    /* 260px matches the hero photo's mobile width, and lifts this one from
+       1.7x to 2.1x density */
+    .about-photo { max-width: 260px; align-self: start; }
   }
 
   /* centre the photo against the prose column. align-items:start on .about
@@ -412,7 +423,7 @@
     display: block;
   }
 
-  .about-bio { grid-area: bio; }
+  .about-bio { grid-area: bio; max-width: 72ch; }
   .about-bio p { color: var(--text-muted); }
   .about-bio p + p { margin-top: 14px; }
 
